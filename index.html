@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Chuyên Ngành - Đại Học Bình Dương</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(to right, #800020, #a52a2a);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .swiper-container {
+            width: 100%;
+            height: calc(100vh - 150px);
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .page-content {
+            max-width: 800px;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .major-card h3 {
+            color: #800020;
+        }
+        .cntt-card h3 {
+            font-size: 1.6em;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #800020;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #f4f4f4;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
+        .progress-fill {
+            height: 5px;
+            background: #800020;
+            width: 0%;
+        }
+        .start-button {
+            background: #800020;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .scholarship-link {
+            color: #800020;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Trường Đại Học Bình Dương</h1>
+    <p>Giới thiệu chuyên ngành & học bổng (2026)</p>
+</header>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+
+        <!-- INTRO -->
+        <div class="swiper-slide">
+            <div class="page-content">
+                <h2>Chào mừng bạn đến với BDU 🎓</h2>
+                <p>Trang này giới thiệu 18 chuyên ngành đào tạo của Trường Đại Học Bình Dương.</p>
+                <p>
+                    Học bổng áp dụng chung:
+                    <span class="scholarship-link" onclick="showScholarship()">Xem chi tiết</span>
+                </p>
+                <button class="start-button" onclick="swiper.slideNext()">Bắt đầu</button>
+            </div>
+        </div>
+
+        <!-- CÁC NGÀNH LOAD TỪ JSON -->
+
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<div class="progress-bar">
+    <div class="progress-fill"></div>
+    <p id="progress-text">Trang 1/1 (Intro)</p>
+</div>
+
+<script>
+let swiper;
+
+fetch('data/majors.json')
+    .then(response => response.json())
+    .then(majors => {
+        const wrapper = document.querySelector('.swiper-wrapper');
+
+        majors.forEach(major => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+
+            slide.innerHTML = `
+                <div class="page-content major-card ${major.name.includes('CÔNG NGHỆ THÔNG TIN') ? 'cntt-card' : ''}">
+                    <h3>${major.name}</h3>
+                    <p><strong>Chỉ tiêu:</strong> ${major.quota}</p>
+                    <p><strong>Tổ hợp xét tuyển:</strong> ${major.combinations.join(', ')}</p>
+                    <p>${major.description}</p>
+                </div>
+            `;
+
+            wrapper.appendChild(slide);
+        });
+
+        initSwiper();
+    })
+    .catch(err => console.error('Lỗi load JSON:', err));
+
+function initSwiper() {
+    swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+        effect: 'coverflow',
+        coverflowEffect: {
+            rotate: 30,
+            depth: 100,
+            slideShadows: true
+        },
+        on: {
+            slideChange: function () {
+                const current = this.activeIndex + 1;
+                const total = this.slides.length;
+                document.querySelector('.progress-fill').style.width = (current / total * 100) + '%';
+                document.getElementById('progress-text').innerText =
+                    `Trang ${current}/${total}` + (current === 1 ? ' (Intro)' : ` (Ngành ${current - 1})`);
+            }
+        }
+    });
+}
+
+function showScholarship() {
+    alert(`CHÍNH SÁCH HỌC BỔNG CHUNG
+
+- Toàn phần: ≥26 điểm
+- Cấp trường: 24–25.99
+- Khuyến khích: 22–23.99
+- Doanh nghiệp & tài năng
+
+Liên hệ hotline để biết thêm chi tiết.`);
+}
+</script>
+
+</body>
+</html>
