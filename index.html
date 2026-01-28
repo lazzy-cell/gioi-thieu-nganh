@@ -9,50 +9,72 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <style>
+        /* CHỐNG CUỘN NGANG TUYỆT ĐỐI */
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             background-color: #f4f4f4;
             color: #333;
         }
+
         header {
             background: linear-gradient(to right, #800020, #a52a2a);
             color: white;
             padding: 20px;
             text-align: center;
         }
+
         .swiper-container {
             width: 100%;
             height: calc(100vh - 150px);
+            overflow: hidden;
         }
+
         .swiper-slide {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            box-sizing: border-box;
         }
+
         .page-content {
             max-width: 800px;
+            width: 100%;
             background: white;
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             text-align: center;
         }
+
+        .major-image {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
         .major-card h3 {
             color: #800020;
+            margin-top: 10px;
         }
-        .cntt-card h3 {
-            font-size: 1.6em;
-        }
+
         .swiper-button-next,
         .swiper-button-prev {
             color: #800020;
             background: white;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
         }
+
         .progress-bar {
             position: fixed;
             bottom: 0;
@@ -61,12 +83,15 @@
             padding: 10px;
             border-top: 1px solid #ddd;
             text-align: center;
+            box-sizing: border-box;
         }
+
         .progress-fill {
             height: 5px;
             background: #800020;
             width: 0%;
         }
+
         .start-button {
             background: #800020;
             color: white;
@@ -76,6 +101,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .scholarship-link {
             color: #800020;
             text-decoration: underline;
@@ -98,7 +124,7 @@
         <div class="swiper-slide">
             <div class="page-content">
                 <h2>Chào mừng bạn đến với BDU 🎓</h2>
-                <p>Trang này giới thiệu 18 chuyên ngành đào tạo của Trường Đại Học Bình Dương.</p>
+                <p>Trang này giới thiệu 18 chuyên ngành đào tạo.</p>
                 <p>
                     Học bổng áp dụng chung:
                     <span class="scholarship-link" onclick="showScholarship()">Xem chi tiết</span>
@@ -106,8 +132,6 @@
                 <button class="start-button" onclick="swiper.slideNext()">Bắt đầu</button>
             </div>
         </div>
-
-        <!-- CÁC NGÀNH LOAD TỪ JSON -->
 
     </div>
 
@@ -117,14 +141,14 @@
 
 <div class="progress-bar">
     <div class="progress-fill"></div>
-    <p id="progress-text">Trang 1/1 (Intro)</p>
+    <p id="progress-text">Trang 1</p>
 </div>
 
 <script>
 let swiper;
 
 fetch('data/majors.json')
-    .then(response => response.json())
+    .then(res => res.json())
     .then(majors => {
         const wrapper = document.querySelector('.swiper-wrapper');
 
@@ -133,7 +157,8 @@ fetch('data/majors.json')
             slide.className = 'swiper-slide';
 
             slide.innerHTML = `
-                <div class="page-content major-card ${major.name.includes('CÔNG NGHỆ THÔNG TIN') ? 'cntt-card' : ''}">
+                <div class="page-content major-card">
+                    <img src="${major.image}" alt="${major.name}" class="major-image">
                     <h3>${major.name}</h3>
                     <p><strong>Chỉ tiêu:</strong> ${major.quota}</p>
                     <p><strong>Tổ hợp xét tuyển:</strong> ${major.combinations.join(', ')}</p>
@@ -146,20 +171,16 @@ fetch('data/majors.json')
 
         initSwiper();
     })
-    .catch(err => console.error('Lỗi load JSON:', err));
+    .catch(err => console.error('Không load được JSON:', err));
 
 function initSwiper() {
     swiper = new Swiper('.swiper-container', {
         slidesPerView: 1,
+        allowTouchMove: true,
+        resistanceRatio: 0,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
-        },
-        effect: 'coverflow',
-        coverflowEffect: {
-            rotate: 30,
-            depth: 100,
-            slideShadows: true
         },
         on: {
             slideChange: function () {
@@ -167,21 +188,19 @@ function initSwiper() {
                 const total = this.slides.length;
                 document.querySelector('.progress-fill').style.width = (current / total * 100) + '%';
                 document.getElementById('progress-text').innerText =
-                    `Trang ${current}/${total}` + (current === 1 ? ' (Intro)' : ` (Ngành ${current - 1})`);
+                    `Trang ${current}/${total}`;
             }
         }
     });
 }
 
 function showScholarship() {
-    alert(`CHÍNH SÁCH HỌC BỔNG CHUNG
+    alert(`CHÍNH SÁCH HỌC BỔNG
 
 - Toàn phần: ≥26 điểm
 - Cấp trường: 24–25.99
 - Khuyến khích: 22–23.99
-- Doanh nghiệp & tài năng
-
-Liên hệ hotline để biết thêm chi tiết.`);
+- Doanh nghiệp & tài năng`);
 }
 </script>
 
