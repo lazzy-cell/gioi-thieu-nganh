@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giới Thiệu Chuyên Ngành - BDU</title>
-
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
 <style>
 html, body {
     margin: 0;
@@ -15,24 +13,20 @@ html, body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
 }
-
 header {
     background: linear-gradient(to right, #800020, #a52a2a);
     color: #fff;
     padding: 20px;
     text-align: center;
 }
-
 .swiper-container {
     height: calc(100vh - 140px);
 }
-
 .swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .page-content {
     background: #fff;
     max-width: 800px;
@@ -41,7 +35,6 @@ header {
     border-radius: 10px;
     text-align: center;
 }
-
 .major-image {
     width: 100%;
     max-height: 300px;
@@ -49,7 +42,6 @@ header {
     border-radius: 8px;
     margin-bottom: 15px;
 }
-
 .progress-bar {
     position: fixed;
     bottom: 0;
@@ -57,7 +49,6 @@ header {
     background: #eee;
     padding: 8px;
 }
-
 .progress-fill {
     height: 5px;
     width: 0;
@@ -65,58 +56,48 @@ header {
 }
 </style>
 </head>
-
 <body>
-
 <header>
 <h1>Đại Học Bình Dương</h1>
 <p>Giới thiệu chuyên ngành</p>
 </header>
-
 <div class="swiper-container">
 <div class="swiper-wrapper">
-
 <div class="swiper-slide">
 <div class="page-content">
-<h2>Chào mừng 🎓</h2>
-<button onclick="swiper.slideNext()">Bắt đầu</button>
+<h2>Chào mừng các bạn đến với Đại học Bình Dương!</h2>
+<p>Cùng đến với hành trình khám phá 18 chuyên ngành đào tạo đa dạng, chất lượng cao tại Đại học Bình Dương. Từ những lĩnh vực công nghệ tiên tiến như Công nghệ Thông tin hay Công nghệ Kỹ thuật Ô tô, đến các ngành kinh tế - xã hội sôi động như Quản trị Kinh doanh, Tài chính - Ngân hàng, hay thậm chí các chuyên ngành văn hóa và khoa học như Nhật Bản học, Hàn Quốc học và Dược học... Mỗi chuyên ngành đều được thiết kế tinh tế, kết hợp lý thuyết vững chắc với thực tiễn thực tế, nhằm trang bị cho các bạn kỹ năng vượt trội để chinh phục thị trường việc làm toàn cầu. Với đội ngũ giảng viên giàu kinh nghiệm, cơ sở vật chất hiện đại và môi trường học tập thân thiện, Đại học Bình Dương cam kết đồng hành cùng các bạn biến giấc mơ thành hiện thực. Hãy cùng bắt đầu hành trình thú vị này ngay hôm nay để tìm ra chuyên ngành phù hợp nhất với đam mê của bạn!</p>
+<button onclick="swiper.slideNext()">Bắt đầu khám phá</button>
 </div>
 </div>
-
 </div>
-
 <div class="swiper-button-next"></div>
 <div class="swiper-button-prev"></div>
 </div>
-
 <div class="progress-bar">
 <div class="progress-fill"></div>
 </div>
-
 <script>
 let swiper;
-
 fetch('data/majors.json')
 .then(r => r.json())
 .then(data => {
     const wrapper = document.querySelector('.swiper-wrapper');
-
     data.forEach(m => {
         const s = document.createElement('div');
         s.className = 'swiper-slide';
         s.innerHTML = `
             <div class="page-content">
-                <img 
-                  src="${m.image}" 
+                <img
+                  src="${m.image}"
                   class="major-image"
                   onerror="this.src='https://via.placeholder.com/800x300?text=No+Image'">
                 <h3>${m.name}</h3>
-                <p><b>Chỉ tiêu:</b> ${m.quota}</p>
+                <p><b>Tổ hợp xét tuyển:</b> ${m.combinations.join(", ")}</p>
                 <p>${m.description}</p>
             </div>`;
         wrapper.appendChild(s);
     });
-
     swiper = new Swiper('.swiper-container', {
         navigation: {
             nextEl: '.swiper-button-next',
@@ -131,6 +112,5 @@ fetch('data/majors.json')
     });
 });
 </script>
-
 </body>
 </html>

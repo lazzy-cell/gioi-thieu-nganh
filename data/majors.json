@@ -2,7 +2,6 @@
   {
     "id": 1,
     "name": "NHẬT BẢN HỌC",
-    "quota": 11,
     "combinations": ["A01", "C00", "D01", "D14", "D15", "D66"],
     "image": "https://images.unsplash.com/photo-1549692520-acc6669e2f0c",
     "description": "Ngành đào tạo ngôn ngữ, văn hóa và xã hội Nhật Bản, định hướng làm việc tại doanh nghiệp Nhật hoặc du học."
@@ -10,7 +9,6 @@
   {
     "id": 2,
     "name": "HÀN QUỐC HỌC",
-    "quota": 11,
     "combinations": ["A01", "C00", "D01", "D14", "D15", "D66"],
     "image": "images/han-quoc-hoc.jpg",
     "description": "Trang bị kiến thức về tiếng Hàn, văn hóa và kinh tế Hàn Quốc, đáp ứng nhu cầu hội nhập và làm việc quốc tế."
@@ -18,7 +16,6 @@
   {
     "id": 3,
     "name": "CÔNG NGHỆ THỰC PHẨM",
-    "quota": 8,
     "combinations": ["A00", "B00", "B03", "C02", "C14", "D01"],
     "image": "images/cong-nghe-thuc-pham.jpg",
     "description": "Đào tạo kỹ sư kiểm soát, chế biến và phát triển sản phẩm thực phẩm theo tiêu chuẩn an toàn và công nghiệp."
@@ -26,7 +23,6 @@
   {
     "id": 4,
     "name": "LOGISTICS VÀ QUẢN LÝ CHUỖI CUNG ỨNG",
-    "quota": 10,
     "combinations": ["A00", "A01", "C01", "C14", "D01", "D56"],
     "image": "images/logistics.jpg",
     "description": "Ngành học về vận hành, phân phối và tối ưu chuỗi cung ứng trong bối cảnh thương mại toàn cầu."
@@ -34,7 +30,6 @@
   {
     "id": 5,
     "name": "TÀI CHÍNH - NGÂN HÀNG",
-    "quota": 8,
     "combinations": ["A00", "C01", "C03", "C04", "C14", "D01"],
     "image": "images/tai-chinh-ngan-hang.jpg",
     "description": "Trang bị kiến thức tài chính, ngân hàng và đầu tư, phục vụ cho doanh nghiệp và tổ chức tài chính."
@@ -42,7 +37,6 @@
   {
     "id": 6,
     "name": "LUẬT",
-    "quota": 7,
     "combinations": ["A00", "C00", "C03", "C04", "C14", "D01"],
     "image": "images/luat.jpg",
     "description": "Đào tạo cử nhân luật có kiến thức pháp lý nền tảng, phục vụ công tác pháp chế và hành chính."
@@ -50,7 +44,6 @@
   {
     "id": 7,
     "name": "LUẬT KINH TẾ",
-    "quota": 8,
     "combinations": ["A00", "C00", "C03", "C04", "C14", "D01"],
     "image": "images/luat-kinh-te.jpg",
     "description": "Chuyên sâu về pháp luật trong hoạt động kinh doanh, thương mại và doanh nghiệp."
@@ -58,7 +51,6 @@
   {
     "id": 8,
     "name": "QUẢN TRỊ KINH DOANH",
-    "quota": 15,
     "combinations": ["A00", "C01", "C03", "C04", "C14", "D01"],
     "image": "images/quan-tri-kinh-doanh.jpg",
     "description": "Đào tạo kỹ năng quản lý, điều hành và phát triển doanh nghiệp trong môi trường kinh doanh hiện đại."
@@ -66,7 +58,6 @@
   {
     "id": 9,
     "name": "CÔNG NGHỆ THÔNG TIN",
-    "quota": 12,
     "combinations": ["A00", "C01", "C03", "C04", "C14", "D01"],
     "image": "images/cong-nghe-thong-tin.jpg",
     "description": "Trang bị kiến thức nền tảng về phần mềm, hệ thống thông tin và ứng dụng công nghệ số."
@@ -74,7 +65,6 @@
   {
     "id": 10,
     "name": "CÔNG NGHỆ KỸ THUẬT CÔNG TRÌNH XÂY DỰNG",
-    "quota": 8,
     "combinations": ["A00", "C01", "C03", "C04", "C14", "D01"],
     "image": "images/xay-dung.jpg",
     "description": "Đào tạo kỹ sư thi công, quản lý và giám sát các công trình xây dựng dân dụng và công nghiệp."
@@ -82,7 +72,6 @@
   {
     "id": 11,
     "name": "KIẾN TRÚC",
-    "quota": 8,
     "combinations": ["A00", "C01", "C03", "C04", "C14", "D01"],
     "image": "images/kien-truc.jpg",
     "description": "Ngành học kết hợp nghệ thuật và kỹ thuật trong thiết kế không gian kiến trúc."
@@ -90,7 +79,6 @@
   {
     "id": 12,
     "name": "NGÔN NGỮ ANH",
-    "quota": 12,
     "combinations": ["A01", "D01", "D07", "D14", "D15", "D66"],
     "image": "images/ngon-ngu-anh.jpg",
     "description": "Đào tạo kỹ năng tiếng Anh chuyên sâu, phục vụ giảng dạy, biên phiên dịch và doanh nghiệp."
@@ -98,7 +86,6 @@
   {
     "id": 13,
     "name": "DƯỢC HỌC",
-    "quota": 10,
     "combinations": ["A00", "B00", "B03", "C02", "C08", "D07"],
     "image": "images/duoc-hoc.jpg",
     "description": "Đào tạo dược sĩ có kiến thức về thuốc, sản xuất, phân phối và tư vấn sử dụng thuốc."
@@ -106,7 +93,6 @@
   {
     "id": 14,
     "name": "KẾ TOÁN",
-    "quota": 12,
     "combinations": ["A00", "C01", "C03", "C04", "C14", "D01"],
     "image": "images/ke-toan.jpg",
     "description": "Trang bị kiến thức kế toán, kiểm toán và tài chính cho doanh nghiệp."
@@ -114,7 +100,6 @@
   {
     "id": 15,
     "name": "CÔNG NGHỆ KỸ THUẬT ĐIỆN, ĐIỆN TỪ",
-    "quota": 8,
     "combinations": ["A00", "C01", "C03", "C04", "C14", "D01"],
     "image": "images/dien-dien-tu.jpg",
     "description": "Đào tạo kỹ sư điện, điện tử phục vụ công nghiệp và tự động hóa."
@@ -122,7 +107,6 @@
   {
     "id": 16,
     "name": "XÃ HỘI HỌC",
-    "quota": 14,
     "combinations": ["A00", "C01", "C03", "C04", "C14", "D01"],
     "image": "images/xa-hoi-hoc.jpg",
     "description": "Nghiên cứu xã hội, cộng đồng và các vấn đề phát triển xã hội hiện đại."
@@ -130,7 +114,6 @@
   {
     "id": 17,
     "name": "HOÁ DƯỢC",
-    "quota": 9,
     "combinations": ["A00", "B00", "B03", "C02", "C08", "D07"],
     "image": "images/hoa-duoc.jpg",
     "description": "Kết hợp hóa học và dược học trong nghiên cứu, sản xuất và kiểm nghiệm thuốc."
@@ -138,7 +121,6 @@
   {
     "id": 18,
     "name": "CÔNG NGHỆ KỸ THUẬT Ô TÔ",
-    "quota": 9,
     "combinations": ["A00", "C01", "C03", "C04", "C14", "D01"],
     "image": "images/o-to.jpg",
     "description": "Đào tạo kỹ sư bảo trì, thiết kế và vận hành công nghệ ô tô hiện đại."
