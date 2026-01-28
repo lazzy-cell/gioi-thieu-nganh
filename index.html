@@ -54,6 +54,20 @@ header {
     width: 0;
     background: #800020;
 }
+.start-button {
+    background: linear-gradient(to right, #800020, #a52a2a);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-top: 20px;
+}
+.start-button:hover {
+    opacity: 0.9;
+}
 </style>
 </head>
 <body>
@@ -65,9 +79,8 @@ header {
 <div class="swiper-wrapper">
 <div class="swiper-slide">
 <div class="page-content">
-<h2>Chào mừng các bạn đến với Đại học Bình Dương!</h2>
-<p>Cùng đến với hành trình khám phá 18 chuyên ngành đào tạo đa dạng, chất lượng cao tại Đại học Bình Dương. Từ những lĩnh vực công nghệ tiên tiến như Công nghệ Thông tin hay Công nghệ Kỹ thuật Ô tô, đến các ngành kinh tế - xã hội sôi động như Quản trị Kinh doanh, Tài chính - Ngân hàng, hay thậm chí các chuyên ngành văn hóa và khoa học như Nhật Bản học, Hàn Quốc học và Dược học... Mỗi chuyên ngành đều được thiết kế tinh tế, kết hợp lý thuyết vững chắc với thực tiễn thực tế, nhằm trang bị cho các bạn kỹ năng vượt trội để chinh phục thị trường việc làm toàn cầu. Với đội ngũ giảng viên giàu kinh nghiệm, cơ sở vật chất hiện đại và môi trường học tập thân thiện, Đại học Bình Dương cam kết đồng hành cùng các bạn biến giấc mơ thành hiện thực. Hãy cùng bắt đầu hành trình thú vị này ngay hôm nay để tìm ra chuyên ngành phù hợp nhất với đam mê của bạn!</p>
-<button onclick="swiper.slideNext()">Bắt đầu khám phá</button>
+<h2>Cùng đến với hành trình khám phá 18 chuyên ngành đào tạo đa dạng, chất lượng cao tại Đại học Bình Dương.</h2>
+<button class="start-button" onclick="swiper.slideNext()">Bắt đầu khám phá</button>
 </div>
 </div>
 </div>
