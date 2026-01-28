@@ -3,14 +3,14 @@
     "id": 1,
     "name": "NHẬT BẢN HỌC",
     "combinations": ["A01", "C00", "D01", "D14", "D15", "D66"],
-    "image": "https://images.unsplash.com/photo-1549692520-acc6669e2f0c",
+    "image": "https://honya.vn/uploads/images/du-hoc-nhat-ban-co-hoi-phat-trien-va-hoc-tap-tuyet-voi-2.jpg",
     "description": "Ngành đào tạo ngôn ngữ, văn hóa và xã hội Nhật Bản, định hướng làm việc tại doanh nghiệp Nhật hoặc du học."
   },
   {
     "id": 2,
     "name": "HÀN QUỐC HỌC",
     "combinations": ["A01", "C00", "D01", "D14", "D15", "D66"],
-    "image": "images/han-quoc-hoc.jpg",
+    "image": "https://dp.lhu.edu.vn/Data/News/81/images/10952884_608442119257730_7807144447143875018_o.jpg",
     "description": "Trang bị kiến thức về tiếng Hàn, văn hóa và kinh tế Hàn Quốc, đáp ứng nhu cầu hội nhập và làm việc quốc tế."
   },
   {
