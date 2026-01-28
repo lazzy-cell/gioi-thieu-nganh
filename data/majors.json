@@ -4,7 +4,7 @@
     "name": "NHẬT BẢN HỌC",
     "quota": 11,
     "combinations": ["A01", "C00", "D01", "D14", "D15", "D66"],
-    "image": "images/nhat-ban-hoc.jpg",
+    "image": "https://images.unsplash.com/photo-1549692520-acc6669e2f0c",
     "description": "Ngành đào tạo ngôn ngữ, văn hóa và xã hội Nhật Bản, định hướng làm việc tại doanh nghiệp Nhật hoặc du học."
   },
   {

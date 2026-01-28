@@ -1,207 +1,135 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới Thiệu Chuyên Ngành - Đại Học Bình Dương</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giới Thiệu Chuyên Ngành - BDU</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    <style>
-        /* CHỐNG CUỘN NGANG TUYỆT ĐỐI */
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-        }
+<style>
+html, body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+header {
+    background: linear-gradient(to right, #800020, #a52a2a);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
 
-        header {
-            background: linear-gradient(to right, #800020, #a52a2a);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+.swiper-container {
+    height: calc(100vh - 140px);
+}
 
-        .swiper-container {
-            width: 100%;
-            height: calc(100vh - 150px);
-            overflow: hidden;
-        }
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+.page-content {
+    background: #fff;
+    max-width: 800px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
 
-        .page-content {
-            max-width: 800px;
-            width: 100%;
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+.major-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
 
-        .major-image {
-            width: 100%;
-            max-height: 280px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
+.progress-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #eee;
+    padding: 8px;
+}
 
-        .major-card h3 {
-            color: #800020;
-            margin-top: 10px;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #800020;
-            background: white;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-        }
-
-        .progress-bar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: #f4f4f4;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .progress-fill {
-            height: 5px;
-            background: #800020;
-            width: 0%;
-        }
-
-        .start-button {
-            background: #800020;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .scholarship-link {
-            color: #800020;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-    </style>
+.progress-fill {
+    height: 5px;
+    width: 0;
+    background: #800020;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>Trường Đại Học Bình Dương</h1>
-    <p>Giới thiệu chuyên ngành & học bổng (2026)</p>
+<h1>Đại Học Bình Dương</h1>
+<p>Giới thiệu chuyên ngành</p>
 </header>
 
 <div class="swiper-container">
-    <div class="swiper-wrapper">
+<div class="swiper-wrapper">
 
-        <!-- INTRO -->
-        <div class="swiper-slide">
-            <div class="page-content">
-                <h2>Chào mừng bạn đến với BDU 🎓</h2>
-                <p>Trang này giới thiệu 18 chuyên ngành đào tạo.</p>
-                <p>
-                    Học bổng áp dụng chung:
-                    <span class="scholarship-link" onclick="showScholarship()">Xem chi tiết</span>
-                </p>
-                <button class="start-button" onclick="swiper.slideNext()">Bắt đầu</button>
-            </div>
-        </div>
+<div class="swiper-slide">
+<div class="page-content">
+<h2>Chào mừng 🎓</h2>
+<button onclick="swiper.slideNext()">Bắt đầu</button>
+</div>
+</div>
 
-    </div>
+</div>
 
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
 </div>
 
 <div class="progress-bar">
-    <div class="progress-fill"></div>
-    <p id="progress-text">Trang 1</p>
+<div class="progress-fill"></div>
 </div>
 
 <script>
 let swiper;
 
 fetch('data/majors.json')
-    .then(res => res.json())
-    .then(majors => {
-        const wrapper = document.querySelector('.swiper-wrapper');
+.then(r => r.json())
+.then(data => {
+    const wrapper = document.querySelector('.swiper-wrapper');
 
-        majors.forEach(major => {
-            const slide = document.createElement('div');
-            slide.className = 'swiper-slide';
+    data.forEach(m => {
+        const s = document.createElement('div');
+        s.className = 'swiper-slide';
+        s.innerHTML = `
+            <div class="page-content">
+                <img 
+                  src="${m.image}" 
+                  class="major-image"
+                  onerror="this.src='https://via.placeholder.com/800x300?text=No+Image'">
+                <h3>${m.name}</h3>
+                <p><b>Chỉ tiêu:</b> ${m.quota}</p>
+                <p>${m.description}</p>
+            </div>`;
+        wrapper.appendChild(s);
+    });
 
-            slide.innerHTML = `
-                <div class="page-content major-card">
-                    <img src="${major.image}" alt="${major.name}" class="major-image">
-                    <h3>${major.name}</h3>
-                    <p><strong>Chỉ tiêu:</strong> ${major.quota}</p>
-                    <p><strong>Tổ hợp xét tuyển:</strong> ${major.combinations.join(', ')}</p>
-                    <p>${major.description}</p>
-                </div>
-            `;
-
-            wrapper.appendChild(slide);
-        });
-
-        initSwiper();
-    })
-    .catch(err => console.error('Không load được JSON:', err));
-
-function initSwiper() {
     swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        allowTouchMove: true,
-        resistanceRatio: 0,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
         },
         on: {
-            slideChange: function () {
-                const current = this.activeIndex + 1;
-                const total = this.slides.length;
-                document.querySelector('.progress-fill').style.width = (current / total * 100) + '%';
-                document.getElementById('progress-text').innerText =
-                    `Trang ${current}/${total}`;
+            slideChange() {
+                document.querySelector('.progress-fill').style.width =
+                ((this.activeIndex + 1) / this.slides.length * 100) + '%';
             }
         }
     });
-}
-
-function showScholarship() {
-    alert(`CHÍNH SÁCH HỌC BỔNG
-
-- Toàn phần: ≥26 điểm
-- Cấp trường: 24–25.99
-- Khuyến khích: 22–23.99
-- Doanh nghiệp & tài năng`);
-}
+});
 </script>
 
 </body>
