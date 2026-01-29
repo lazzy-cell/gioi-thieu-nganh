@@ -3,7 +3,7 @@
     "id": 1,
     "name": "NHẬT BẢN HỌC",
     "combinations": ["A01", "C00", "D01", "D14", "D15", "D66"],
-    "image": "https://honya.vn/uploads/images/du-hoc-nhat-ban-co-hoi-phat-trien-va-hoc-tap-tuyet-voi-2.jpg",
+    "image": "https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/nhat-ban-hoc.jpg",
     "description": "Ngành đào tạo ngôn ngữ, văn hóa và xã hội Nhật Bản, định hướng làm việc tại doanh nghiệp Nhật hoặc du học."
   },
   {
