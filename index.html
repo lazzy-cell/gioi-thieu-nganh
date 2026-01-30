@@ -247,7 +247,6 @@
             </div>
         </div>
     </header>
-
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <!-- SLIDE GIỚI THIỆU -->
@@ -266,18 +265,34 @@
                     </button>
                 </div>
             </div>
+
+            <!-- SLIDE MỚI: MỜI GỌI LÀM TRẮC NGHIỆM TÍNH CÁCH -->
+            <div class="swiper-slide">
+                <div class="page-content">
+                    <h2 style="margin-top: 40px;">Bạn chưa biết ngành nào phù hợp với mình?</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.7; margin: 25px 0 35px;">
+                        Hãy làm ngay bài trắc nghiệm tính cách & sở thích<br>
+                        chỉ mất 5–7 phút để tìm ra top các ngành học phù hợp nhất với bạn!
+                    </p>
+                    <button class="start-button" 
+                            onclick="window.open('https://lazzy-cell.github.io/trac_nghiem_nghe_nghiep/', '_blank')">
+                        Làm trắc nghiệm ngay
+                    </button>
+                    <p style="margin-top: 40px; font-size: 0.95rem; color: #555;">
+                        Sau khi hoàn thành, bạn có thể quay lại tiếp tục khám phá các ngành tại đây.
+                    </p>
+                </div>
+            </div>
+
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
-
     <div class="progress-bar">
         <div class="progress-fill"></div>
     </div>
-
     <script>
         let swiper;
-
         fetch('data/majors.json')
             .then(r => {
                 if (!r.ok) throw new Error('Không tải được majors.json');
@@ -285,7 +300,6 @@
             })
             .then(data => {
                 const wrapper = document.querySelector('.swiper-wrapper');
-
                 // Thêm các slide ngành học
                 data.forEach(m => {
                     const slide = document.createElement('div');
@@ -302,7 +316,6 @@
                         </div>`;
                     wrapper.appendChild(slide);
                 });
-
                 // Thêm slide mời gọi chính sách học bổng (slide cuối)
                 const inviteSlide = document.createElement('div');
                 inviteSlide.className = 'swiper-slide';
@@ -315,7 +328,6 @@
                         </button>
                     </div>`;
                 wrapper.appendChild(inviteSlide);
-
                 // Khởi tạo Swiper
                 swiper = new Swiper('.swiper-container', {
                     navigation: {
