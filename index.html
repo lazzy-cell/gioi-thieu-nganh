@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giới Thiệu Chuyên Ngành - BDU</title>
+
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 <style>
 html, body {
     margin: 0;
@@ -13,20 +15,56 @@ html, body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
 }
+
+/* ===== HEADER CÓ ẢNH + OVERLAY ===== */
 header {
-    background: linear-gradient(to right, #800020, #a52a2a);
+    position: relative;
+    background-image: url("https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/trang-gioi-thieu.jpg");
+    background-size: cover;
+    background-position: center;
     color: #fff;
-    padding: 20px;
+    padding: 40px 20px;
     text-align: center;
+    overflow: hidden;
 }
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+}
+
+header h1,
+header p {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+/* ===== SWIPER ===== */
 .swiper-container {
-    height: calc(100vh - 140px);
+    height: calc(100vh - 160px);
 }
+
 .swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+/* ===== CONTENT ===== */
 .page-content {
     background: #fff;
     max-width: 800px;
@@ -35,6 +73,7 @@ header {
     border-radius: 10px;
     text-align: center;
 }
+
 .major-image {
     width: 100%;
     max-height: 300px;
@@ -42,18 +81,8 @@ header {
     border-radius: 8px;
     margin-bottom: 15px;
 }
-.progress-bar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #eee;
-    padding: 8px;
-}
-.progress-fill {
-    height: 5px;
-    width: 0;
-    background: #800020;
-}
+
+/* ===== BUTTON ===== */
 .start-button {
     background: linear-gradient(to right, #800020, #a52a2a);
     color: #fff;
@@ -65,48 +94,75 @@ header {
     transition: opacity 0.3s ease;
     margin-top: 20px;
 }
+
 .start-button:hover {
     opacity: 0.9;
 }
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #eee;
+    padding: 8px;
+}
+
+.progress-fill {
+    height: 5px;
+    width: 0;
+    background: #800020;
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>Đại Học Bình Dương</h1>
-<p>Giới thiệu chuyên ngành</p>
+    <h1>Đại Học Bình Dương</h1>
+    <p>Giới thiệu chuyên ngành</p>
 </header>
+
 <div class="swiper-container">
-<div class="swiper-wrapper">
-<div class="swiper-slide">
-  <div class="page-content">
-    <img
-      src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/trang-gioi-thieu.jpg"
-      class="major-image"
-      onerror="this.src='https://via.placeholder.com/800x300?text=BDU'">
+    <div class="swiper-wrapper">
 
-    <h2>
-      Cùng đến với hành trình khám phá 18 chuyên ngành đào tạo đa dạng, chất lượng cao
-      tại Đại học Bình Dương.
-    </h2>
+        <!-- SLIDE GIỚI THIỆU -->
+        <div class="swiper-slide">
+            <div class="page-content">
+                <img
+                  src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/trang-gioi-thieu.jpg"
+                  class="major-image"
+                  onerror="this.src='https://via.placeholder.com/800x300?text=BDU'">
 
-    <button class="start-button" onclick="swiper.slideNext()">
-      Bắt đầu khám phá
-    </button>
-  </div>
+                <h2>
+                    Cùng đến với hành trình khám phá 18 chuyên ngành đào tạo đa dạng,
+                    chất lượng cao tại Đại học Bình Dương.
+                </h2>
+
+                <button class="start-button" onclick="swiper.slideNext()">
+                    Bắt đầu khám phá
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
 </div>
-</div>
-<div class="swiper-button-next"></div>
-<div class="swiper-button-prev"></div>
-</div>
+
 <div class="progress-bar">
-<div class="progress-fill"></div>
+    <div class="progress-fill"></div>
 </div>
+
 <script>
 let swiper;
+
 fetch('data/majors.json')
 .then(r => r.json())
 .then(data => {
     const wrapper = document.querySelector('.swiper-wrapper');
+
     data.forEach(m => {
         const s = document.createElement('div');
         s.className = 'swiper-slide';
@@ -122,6 +178,7 @@ fetch('data/majors.json')
             </div>`;
         wrapper.appendChild(s);
     });
+
     swiper = new Swiper('.swiper-container', {
         navigation: {
             nextEl: '.swiper-button-next',
@@ -136,5 +193,6 @@ fetch('data/majors.json')
     });
 });
 </script>
+
 </body>
 </html>
