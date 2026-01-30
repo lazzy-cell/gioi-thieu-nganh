@@ -7,17 +7,27 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <style>
+        :root {
+            --header-height: 90px;          /* ước lượng chiều cao header desktop */
+            --header-height-mobile: 80px;   /* mobile */
+        }
+
         html, body {
             margin: 0;
+            padding: 0;
+            height: 100%;
             overflow-x: hidden;
             font-family: Arial, sans-serif;
             background: #f4f4f4;
         }
+
         /* ===== HEADER ===== */
         header {
             background: linear-gradient(135deg, #800020, #a52a2a);
             color: #fff;
             padding: 14px 20px;
+            position: relative;
+            z-index: 10;
         }
         .header-inner {
             max-width: 1100px;
@@ -45,7 +55,6 @@
             font-size: 14px;
             opacity: 0.9;
         }
-        /* ===== HEADER ACTIONS - TEXT BUTTON STYLE ===== */
         .header-actions {
             display: flex;
             gap: 20px;
@@ -63,7 +72,6 @@
             position: relative;
             transition: opacity 0.2s ease;
         }
-        /* underline animation */
         .header-actions button::after,
         .header-actions a::after {
             content: "";
@@ -83,19 +91,25 @@
         .header-actions a:hover::after {
             width: 100%;
         }
-        /* link ngoài dịu hơn một chút */
         .header-actions a {
             opacity: 0.7;
         }
+
         /* ===== SWIPER ===== */
         .swiper-container {
-            height: calc(100vh - 120px);
+            height: calc(100vh - var(--header-height));
+            width: 100%;
         }
         .swiper-slide {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;       /* Bắt đầu từ trên xuống */
+            padding: 20px 0;
+            overflow-y: auto;              /* Cho phép cuộn nếu nội dung dài */
+            -webkit-overflow-scrolling: touch;
+            box-sizing: border-box;
         }
+
         /* ===== CONTENT ===== */
         .page-content {
             background: #fff;
@@ -104,6 +118,7 @@
             padding: 25px;
             border-radius: 10px;
             text-align: center;
+            box-sizing: border-box;
         }
         .major-image {
             width: 100%;
@@ -112,6 +127,7 @@
             border-radius: 8px;
             margin-bottom: 15px;
         }
+
         /* ===== BUTTON ===== */
         .start-button {
             background: linear-gradient(to right, #800020, #a52a2a);
@@ -127,21 +143,57 @@
         .start-button:hover {
             opacity: 0.9;
         }
+
         /* ===== PROGRESS BAR ===== */
         .progress-bar {
             position: fixed;
             bottom: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
+            height: 5px;
             background: #eee;
-            padding: 8px;
+            z-index: 20;
         }
         .progress-fill {
-            height: 5px;
+            height: 100%;
             width: 0;
             background: #800020;
+            transition: width 0.3s ease;
         }
+
+        /* ===== SCHOLARSHIP CARDS ===== */
+        .scholarship-container {
+            max-width: 900px;
+            width: 100%;
+            padding: 0 15px;
+            text-align: left;
+        }
+        .scholarship-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .scholarship-card h3 {
+            color: #800020;
+            margin: 0 0 12px;
+        }
+        .scholarship-card p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        .scholarship-card .amount {
+            color: #a52a2a;
+            font-size: 1.25em;
+            font-weight: bold;
+        }
+
         /* ===== MOBILE ===== */
         @media (max-width: 600px) {
+            :root {
+                --header-height: var(--header-height-mobile);
+            }
             .header-logo {
                 height: 44px;
             }
@@ -151,32 +203,12 @@
             .header-actions {
                 display: none;
             }
-        }
-        /* ===== SCHOLARSHIP CARDS ===== */
-        .scholarship-container {
-            max-width: 900px;
-            width: 100%;
-            padding: 25px;
-            text-align: left;
-        }
-        .scholarship-card {
-            background: #f9f9f9;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .scholarship-card h3 {
-            color: #800020;
-            margin-top: 0;
-        }
-        .scholarship-card p {
-            margin: 5px 0;
-        }
-        .scholarship-card .amount {
-            color: #a52a2a;
-            font-size: 1.2em;
-            font-weight: bold;
+            .swiper-slide {
+                padding: 10px 0;
+            }
+            .scholarship-container {
+                padding: 0 10px;
+            }
         }
     </style>
 </head>
@@ -200,6 +232,7 @@
             </div>
         </div>
     </header>
+
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <!-- SLIDE GIỚI THIỆU -->
@@ -222,65 +255,87 @@
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
+
     <div class="progress-bar">
         <div class="progress-fill"></div>
     </div>
+
     <script>
         let swiper;
+
         fetch('data/majors.json')
-        .then(r => r.json())
-        .then(data => {
-            const wrapper = document.querySelector('.swiper-wrapper');
-            data.forEach(m => {
-                const s = document.createElement('div');
-                s.className = 'swiper-slide';
-                s.innerHTML = `
-                    <div class="page-content">
-                        <img
-                          src="${m.image}"
-                          class="major-image"
-                          onerror="this.src='https://via.placeholder.com/800x300?text=No+Image'">
-                        <h3>${m.name}</h3>
-                        <p><b>Tổ hợp xét tuyển:</b> ${m.combinations.join(", ")}</p>
-                        <p>${m.description}</p>
-                    </div>`;
-                wrapper.appendChild(s);
-            });
-            return fetch('data/scholarships.json');
-        })
-        .then(r => r.json())
-        .then(scholarships => {
-            const wrapper = document.querySelector('.swiper-wrapper');
-            const scholarshipSlide = document.createElement('div');
-            scholarshipSlide.className = 'swiper-slide';
-            let innerContent = `
-                <div class="scholarship-container">
-                    <h2 style="text-align: center; color: #800020;">CHÍNH SÁCH HỌC BỔNG</h2>`;
-            scholarships.forEach((sch, index) => {
-                innerContent += `
-                    <div class="scholarship-card">
-                        <h3>${index + 1}. ${sch.name}</h3>
-                        <p><strong>Đối tượng:</strong> ${sch.target}</p>
-                        <p><strong>Mức học bổng:</strong> <span class="amount">${sch.amount}</span></p>
-                        ${sch.note ? `<p><strong>Ghi chú:</strong> ${sch.note}</p>` : ''}
-                    </div>`;
-            });
-            innerContent += `</div>`;
-            scholarshipSlide.innerHTML = innerContent;
-            wrapper.appendChild(scholarshipSlide);
-            swiper = new Swiper('.swiper-container', {
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev'
-                },
-                on: {
-                    slideChange() {
-                        document.querySelector('.progress-fill').style.width =
-                        ((this.activeIndex + 1) / this.slides.length * 100) + '%';
+            .then(r => {
+                if (!r.ok) throw new Error('Không tải được majors.json');
+                return r.json();
+            })
+            .then(data => {
+                const wrapper = document.querySelector('.swiper-wrapper');
+                data.forEach(m => {
+                    const slide = document.createElement('div');
+                    slide.className = 'swiper-slide';
+                    slide.innerHTML = `
+                        <div class="page-content">
+                            <img
+                              src="${m.image}"
+                              class="major-image"
+                              onerror="this.src='https://via.placeholder.com/800x300?text=No+Image'">
+                            <h3>${m.name}</h3>
+                            <p><b>Tổ hợp xét tuyển:</b> ${m.combinations.join(", ")}</p>
+                            <p>${m.description}</p>
+                        </div>`;
+                    wrapper.appendChild(slide);
+                });
+
+                return fetch('data/scholarships.json');
+            })
+            .then(r => {
+                if (!r.ok) throw new Error('Không tải được scholarships.json');
+                return r.json();
+            })
+            .then(scholarships => {
+                const wrapper = document.querySelector('.swiper-wrapper');
+                const scholarshipSlide = document.createElement('div');
+                scholarshipSlide.className = 'swiper-slide';
+
+                let html = `
+                    <div class="scholarship-container">
+                        <h2 style="text-align: center; color: #800020; margin: 10px 0 30px;">CHÍNH SÁCH HỌC BỔNG</h2>`;
+
+                scholarships.forEach((sch, index) => {
+                    html += `
+                        <div class="scholarship-card">
+                            <h3>${index + 1}. ${sch.name}</h3>
+                            <p><strong>Đối tượng:</strong> ${sch.target}</p>
+                            <p><strong>Mức học bổng:</strong> <span class="amount">${sch.amount}</span></p>
+                            ${sch.note ? `<p><strong>Ghi chú:</strong> ${sch.note}</p>` : ''}
+                        </div>`;
+                });
+
+                html += `</div>`;
+                scholarshipSlide.innerHTML = html;
+                wrapper.appendChild(scholarshipSlide);
+
+                // Khởi tạo Swiper
+                swiper = new Swiper('.swiper-container', {
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    autoHeight: true,           // Quan trọng nhất: tự điều chỉnh chiều cao slide
+                    observer: true,
+                    observeParents: true,
+                    on: {
+                        slideChange() {
+                            const progress = ((this.activeIndex + 1) / this.slides.length) * 100;
+                            document.querySelector('.progress-fill').style.width = progress + '%';
+                        },
                     }
-                }
+                });
+            })
+            .catch(err => {
+                console.error('Lỗi tải dữ liệu:', err);
+                // Có thể thêm thông báo cho người dùng nếu muốn
             });
-        });
     </script>
 </body>
 </html>
