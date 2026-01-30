@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính sách học bổng - BDU</title>
+
+    <style>
+        :root {
+            --header-height: 90px;
+            --header-height-mobile: 80px;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #800020, #a52a2a);
+            color: #fff;
+            padding: 14px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header-logo {
+            height: 52px;
+        }
+
+        .header-text h1 {
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .header-text p {
+            margin: 4px 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-actions a {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            opacity: 0.85;
+            position: relative;
+        }
+
+        .header-actions a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.25s ease;
+        }
+
+        .header-actions a:hover {
+            opacity: 1;
+        }
+
+        .header-actions a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== PAGE CONTENT ===== */
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        h2.page-title {
+            text-align: center;
+            color: #800020;
+            margin-bottom: 30px;
+        }
+
+        /* ===== SCHOLARSHIP CARD ===== */
+        .scholarship-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .scholarship-card h3 {
+            color: #800020;
+            margin-top: 0;
+        }
+
+        .scholarship-card p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .amount {
+            color: #a52a2a;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .target-list {
+            margin: 6px 0 12px 18px;
+            padding: 0;
+        }
+
+        .target-list li {
+            margin-bottom: 6px;
+        }
+
+        .target-list li::marker {
+            color: #800020;
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 600px) {
+            .header-actions {
+                display: none;
+            }
+
+            .header-text h1 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="header-left">
+            <img
+                src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/logo.png"
+                class="header-logo"
+                onerror="this.style.display='none'">
+            <div class="header-text">
+                <h1>Đại Học Bình Dương</h1>
+                <p>Chính sách học bổng</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <a href="index.html">Giới thiệu</a>
+            <a href="https://www.bdu.edu.vn/" target="_blank">Website BDU</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <h2 class="page-title">CHÍNH SÁCH HỌC BỔNG</h2>
+
+    <div id="scholarship-list"></div>
+</main>
+
+<script>
+    fetch('data/scholarships.json')
+        .then(r => {
+            if (!r.ok) throw new Error('Không tải được scholarships.json');
+            return r.json();
+        })
+        .then(data => {
+            const container = document.getElementById('scholarship-list');
+
+            data.forEach((sch, index) => {
+                const card = document.createElement('div');
+                card.className = 'scholarship-card';
+
+                card.innerHTML = `
+                    <h3>${index + 1}. ${sch.name}</h3>
+
+                    <p><strong>Đối tượng:</strong></p>
+                    <ul class="target-list">
+                        ${sch.target.map(item => `<li>${item}</li>`).join("")}
+                    </ul>
+
+                    <p>
+                        <strong>Mức học bổng:</strong>
+                        <span class="amount">${sch.amount}</span>
+                    </p>
+
+                    ${sch.note ? `<p><strong>Ghi chú:</strong> ${sch.note}</p>` : ''}
+                `;
+
+                container.appendChild(card);
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+</script>
+
+</body>
+</html>
