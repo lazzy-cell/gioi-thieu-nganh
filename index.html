@@ -16,46 +16,41 @@ html, body {
     background: #f4f4f4;
 }
 
-/* ===== HEADER CÓ ẢNH + OVERLAY ===== */
+/* ===== HEADER DÙNG LOGO ===== */
 header {
-    position: relative;
-    background-image: url("https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/trang-gioi-thieu.jpg");
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(135deg, #800020, #a52a2a);
     color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-    overflow: hidden;
+    padding: 14px 20px;
 }
 
-header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(2px);
+.header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
-header h1,
-header p {
-    position: relative;
-    z-index: 1;
+.header-logo {
+    height: 52px;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.header-text h1 {
+    font-size: 22px;
     margin: 0;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
-header h1 {
-    font-size: 28px;
-}
-
-header p {
-    margin-top: 8px;
-    font-size: 16px;
+.header-text p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    opacity: 0.9;
 }
 
 /* ===== SWIPER ===== */
 .swiper-container {
-    height: calc(100vh - 160px);
+    height: calc(100vh - 120px);
 }
 
 .swiper-slide {
@@ -113,14 +108,33 @@ header p {
     width: 0;
     background: #800020;
 }
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+    .header-logo {
+        height: 44px;
+    }
+    .header-text h1 {
+        font-size: 18px;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>Đại Học Bình Dương</h1>
-    <p>Giới thiệu chuyên ngành</p>
+    <div class="header-inner">
+        <img
+          src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/logo.png"
+          class="header-logo"
+          onerror="this.style.display='none'">
+
+        <div class="header-text">
+            <h1>Đại Học Bình Dương</h1>
+            <p>Giới thiệu chuyên ngành</p>
+        </div>
+    </div>
 </header>
 
 <div class="swiper-container">
