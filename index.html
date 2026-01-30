@@ -188,6 +188,15 @@
             font-size: 1.25em;
             font-weight: bold;
         }
+        .target-list {
+            margin: 6px 0 12px 18px;
+            padding: 0;
+        }
+
+        .target-list li {
+            margin-bottom: 6px;
+            line-height: 1.45;
+        }
 
         /* ===== MOBILE ===== */
         @media (max-width: 600px) {
@@ -305,7 +314,10 @@
                     html += `
                         <div class="scholarship-card">
                             <h3>${index + 1}. ${sch.name}</h3>
-                            <p><strong>Đối tượng:</strong> ${sch.target}</p>
+                            <p><strong>Đối tượng:</strong></p>
+                            <ul class="target-list">
+                                ${sch.target.map(item => `<li>${item}</li>`).join("")}
+                            </ul>
                             <p><strong>Mức học bổng:</strong> <span class="amount">${sch.amount}</span></p>
                             ${sch.note ? `<p><strong>Ghi chú:</strong> ${sch.note}</p>` : ''}
                         </div>`;

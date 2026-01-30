@@ -1,45 +1,86 @@
 [
   {
     "name": "Học bổng Toàn phần",
-    "target": "Thí sinh đạt giải Khuyến khích trở lên tại các kỳ thi học sinh giỏi quốc gia; học sinh giỏi cấp tỉnh, thành phố trực thuộc Trung ương; kỳ thi năng khiếu hoặc khoa học kỹ thuật. Có điểm xét tuyển từ 26 điểm (điểm thi THPT) hoặc từ 28 điểm (học bạ). Ưu tiên thí sinh có chứng chỉ ngoại ngữ hoặc chứng chỉ năng lực quốc tế.",
+    "target": [
+      "Thí sinh đạt giải Khuyến khích trở lên tại các kỳ thi học sinh giỏi quốc gia",
+      "Học sinh giỏi cấp tỉnh, thành phố trực thuộc Trung ương",
+      "Thí sinh đạt giải tại các kỳ thi năng khiếu hoặc khoa học kỹ thuật",
+      "Có điểm xét tuyển từ 26 điểm (điểm thi THPT) hoặc từ 28 điểm (học bạ)",
+      "Ưu tiên thí sinh có chứng chỉ ngoại ngữ hoặc chứng chỉ năng lực quốc tế"
+    ],
     "amount": "100% học phí, áp dụng từ học kỳ 2 trở đi.",
     "note": "Đăng ký nhập học BDU bằng Nguyện vọng 1, hoàn thành hồ sơ và học phí nhập học đến ngày 26/08/2026."
   },
   {
     "name": "Học bổng Chắp cánh ước mơ",
-    "target": "Tân sinh viên thuộc hộ nghèo, hộ cận nghèo hoặc có hoàn cảnh đặc biệt khó khăn; có xác nhận của địa phương hoặc giới thiệu từ Ban Giám hiệu các trường THPT, Giám đốc Trung tâm GDNN-GDTX. Điểm xét tuyển từ 18 điểm (THPT) hoặc 22 điểm (học bạ).",
+    "target": [
+      "Tân sinh viên thuộc hộ nghèo, hộ cận nghèo hoặc có hoàn cảnh đặc biệt khó khăn",
+      "Có xác nhận của địa phương hoặc giới thiệu từ Ban Giám hiệu các trường THPT, Giám đốc Trung tâm GDNN-GDTX",
+      "Có điểm xét tuyển từ 18 điểm (THPT) hoặc 22 điểm (học bạ)"
+    ],
     "amount": "Giảm 50% học phí toàn khóa."
   },
   {
     "name": "Học bổng Kiến tạo cuộc sống xanh",
-    "target": "Tân sinh viên đăng ký xét tuyển vào các ngành: Công nghệ Kỹ thuật Công trình Xây dựng, Kiến trúc, Hóa học, Hóa dược.",
+    "target": [
+      "Tân sinh viên đăng ký xét tuyển vào ngành Công nghệ Kỹ thuật Công trình Xây dựng",
+      "Tân sinh viên đăng ký xét tuyển vào ngành Kiến trúc",
+      "Tân sinh viên đăng ký xét tuyển vào ngành Hóa học",
+      "Tân sinh viên đăng ký xét tuyển vào ngành Hóa dược"
+    ],
     "amount": "Giảm từ 30% đến 50% học phí toàn khóa."
   },
   {
     "name": "Học bổng Tài năng",
-    "target": "Thí sinh có giấy chứng nhận đạt giải Ba trở lên tại các kỳ thi học sinh giỏi, kỳ thi năng khiếu hoặc khoa học kỹ thuật cấp tỉnh, thành phố trực thuộc Trung ương. Có điểm xét tuyển từ 24 điểm (THPT) hoặc 20 điểm (học bạ). Có chứng chỉ IELTS, TOEFL, Linguaskill, TOPIK, JLPT hoặc chứng chỉ quốc tế SAT, ACT theo quy định.",
+    "target": [
+      "Thí sinh có giấy chứng nhận đạt giải Ba trở lên tại các kỳ thi học sinh giỏi cấp tỉnh, thành phố trực thuộc Trung ương",
+      "Thí sinh đạt giải tại các kỳ thi năng khiếu hoặc khoa học kỹ thuật cấp tỉnh, thành phố trực thuộc Trung ương",
+      "Có điểm xét tuyển từ 24 điểm (THPT) hoặc 20 điểm (học bạ)",
+      "Có chứng chỉ IELTS, TOEFL, Linguaskill, TOPIK, JLPT theo quy định",
+      "Có chứng chỉ quốc tế SAT hoặc ACT theo quy định"
+    ],
     "amount": "30.000.000 đồng/sinh viên.",
     "note": "Đăng ký nhập học BDU bằng Nguyện vọng 1, trừ trực tiếp vào học phí."
   },
   {
     "name": "Học bổng Gia đình BDU",
-    "target": "Là con ruột của thành viên Ban Giám hiệu; người đại diện các Trường THPT, TTGDTX, TTGDNN có hợp tác tuyển sinh với BDU; thành viên cấp ủy cơ quan nhà nước từ cấp xã trở lên; hoặc có bố, mẹ, anh, chị, em ruột đang theo học chương trình Tiến sĩ, Thạc sĩ hoặc Đại học tại Trường Đại học Bình Dương.",
+    "target": [
+      "Là con ruột của thành viên Ban Giám hiệu Trường Đại học Bình Dương",
+      "Là người đại diện các Trường THPT, TTGDTX, TTGDNN có hợp tác tuyển sinh với BDU",
+      "Là thành viên cấp ủy cơ quan nhà nước từ cấp xã trở lên",
+      "Có bố, mẹ, anh, chị, em ruột đang theo học chương trình Tiến sĩ, Thạc sĩ hoặc Đại học tại Trường Đại học Bình Dương"
+    ],
     "amount": "30.000.000 đồng/sinh viên."
   },
   {
     "name": "Học bổng Ngành mũi nhọn",
-    "target": "Tân sinh viên khóa 29 đăng ký vào các ngành mũi nhọn gồm: Nhật Bản học, Hàn Quốc học, Ngôn ngữ Anh, Luật, Luật Kinh tế, Xã hội học, Dược học, Công nghệ Kỹ thuật Điện - Điện tử, Tài chính - Ngân hàng.",
+    "target": [
+      "Tân sinh viên khóa 29 đăng ký vào ngành Nhật Bản học",
+      "Tân sinh viên khóa 29 đăng ký vào ngành Hàn Quốc học",
+      "Tân sinh viên khóa 29 đăng ký vào ngành Ngôn ngữ Anh",
+      "Tân sinh viên khóa 29 đăng ký vào ngành Luật hoặc Luật Kinh tế",
+      "Tân sinh viên khóa 29 đăng ký vào ngành Xã hội học",
+      "Tân sinh viên khóa 29 đăng ký vào ngành Dược học",
+      "Tân sinh viên khóa 29 đăng ký vào ngành Công nghệ Kỹ thuật Điện - Điện tử",
+      "Tân sinh viên khóa 29 đăng ký vào ngành Tài chính - Ngân hàng"
+    ],
     "amount": "8.000.000 đồng/sinh viên."
   },
   {
     "name": "Học bổng Gia nhập cộng đồng BDU",
-    "target": "Tất cả thí sinh trúng tuyển bằng Nguyện vọng 1 và hoàn thành hồ sơ, học phí nhập học đến ngày 17/08/2026.",
+    "target": [
+      "Thí sinh trúng tuyển bằng Nguyện vọng 1",
+      "Hoàn thành hồ sơ và học phí nhập học đúng hạn",
+      "Thời hạn hoàn thành đến ngày 17/08/2026"
+    ],
     "amount": "5.000.000 đồng/sinh viên.",
     "note": "Tặng thêm 500.000 đồng trong học kỳ 1 cho thí sinh có voucher giới thiệu từ giáo viên chủ nhiệm hoặc bạn bè cùng lớp cùng nhập học (cả hai thí sinh đều được nhận). Học bổng được xét đồng thời với các học bổng khác."
   },
   {
     "name": "Học bổng Hội nhập",
-    "target": "Tất cả sinh viên nhập học vào Trường Đại học Bình Dương.",
+    "target": [
+      "Tất cả sinh viên nhập học vào Trường Đại học Bình Dương"
+    ],
     "amount": "5.000.000 đồng/sinh viên."
   }
 ]
