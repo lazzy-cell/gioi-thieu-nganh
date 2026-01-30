@@ -8,10 +8,9 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <style>
         :root {
-            --header-height: 90px;          /* ước lượng chiều cao header desktop */
-            --header-height-mobile: 80px;   /* mobile */
+            --header-height: 90px;
+            --header-height-mobile: 80px;
         }
-
         html, body {
             margin: 0;
             padding: 0;
@@ -20,7 +19,6 @@
             font-family: Arial, sans-serif;
             background: #f4f4f4;
         }
-
         /* ===== HEADER ===== */
         header {
             background: linear-gradient(135deg, #800020, #a52a2a);
@@ -94,7 +92,6 @@
         .header-actions a {
             opacity: 0.7;
         }
-
         /* ===== SWIPER ===== */
         .swiper-container {
             height: calc(100vh - var(--header-height));
@@ -103,13 +100,12 @@
         .swiper-slide {
             display: flex;
             justify-content: center;
-            align-items: flex-start;       /* Bắt đầu từ trên xuống */
+            align-items: flex-start;
             padding: 20px 0;
-            overflow-y: auto;              /* Cho phép cuộn nếu nội dung dài */
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             box-sizing: border-box;
         }
-
         /* ===== CONTENT ===== */
         .page-content {
             background: #fff;
@@ -127,7 +123,6 @@
             border-radius: 8px;
             margin-bottom: 15px;
         }
-
         /* ===== BUTTON ===== */
         .start-button {
             background: linear-gradient(to right, #800020, #a52a2a);
@@ -143,7 +138,45 @@
         .start-button:hover {
             opacity: 0.9;
         }
-
+        /* ===== SCHOLARSHIP INVITE ===== */
+        .scholarship-invite {
+            background: linear-gradient(135deg, #fff, #f8f0f0);
+            max-width: 700px;
+            width: 90%;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(128, 0, 32, 0.15);
+            text-align: center;
+            margin: 40px auto;
+        }
+        .scholarship-invite h2 {
+            color: #800020;
+            font-size: 2.2rem;
+            margin: 0 0 20px;
+        }
+        .scholarship-invite p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            margin: 0 0 30px;
+        }
+        .scholarship-btn {
+            background: linear-gradient(to right, #800020, #a52a2a);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(165, 42, 42, 0.3);
+        }
+        .scholarship-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(165, 42, 42, 0.4);
+            opacity: 0.95;
+        }
         /* ===== PROGRESS BAR ===== */
         .progress-bar {
             position: fixed;
@@ -160,44 +193,6 @@
             background: #800020;
             transition: width 0.3s ease;
         }
-
-        /* ===== SCHOLARSHIP CARDS ===== */
-        .scholarship-container {
-            max-width: 900px;
-            width: 100%;
-            padding: 0 15px;
-            text-align: left;
-        }
-        .scholarship-card {
-            background: #f9f9f9;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .scholarship-card h3 {
-            color: #800020;
-            margin: 0 0 12px;
-        }
-        .scholarship-card p {
-            margin: 8px 0;
-            line-height: 1.5;
-        }
-        .scholarship-card .amount {
-            color: #a52a2a;
-            font-size: 1.25em;
-            font-weight: bold;
-        }
-        .target-list {
-            margin: 6px 0 12px 18px;
-            padding: 0;
-        }
-
-        .target-list li {
-            margin-bottom: 6px;
-            line-height: 1.45;
-        }
-
         /* ===== MOBILE ===== */
         @media (max-width: 600px) {
             :root {
@@ -215,8 +210,19 @@
             .swiper-slide {
                 padding: 10px 0;
             }
-            .scholarship-container {
-                padding: 0 10px;
+            .scholarship-invite {
+                padding: 30px 20px;
+                margin: 20px auto;
+            }
+            .scholarship-invite h2 {
+                font-size: 1.8rem;
+            }
+            .scholarship-invite p {
+                font-size: 1.1rem;
+            }
+            .scholarship-btn {
+                padding: 14px 35px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -279,6 +285,8 @@
             })
             .then(data => {
                 const wrapper = document.querySelector('.swiper-wrapper');
+
+                // Thêm các slide ngành học
                 data.forEach(m => {
                     const slide = document.createElement('div');
                     slide.className = 'swiper-slide';
@@ -295,37 +303,18 @@
                     wrapper.appendChild(slide);
                 });
 
-                return fetch('data/scholarships.json');
-            })
-            .then(r => {
-                if (!r.ok) throw new Error('Không tải được scholarships.json');
-                return r.json();
-            })
-            .then(scholarships => {
-                const wrapper = document.querySelector('.swiper-wrapper');
-                const scholarshipSlide = document.createElement('div');
-                scholarshipSlide.className = 'swiper-slide';
-
-                let html = `
-                    <div class="scholarship-container">
-                        <h2 style="text-align: center; color: #800020; margin: 10px 0 30px;">CHÍNH SÁCH HỌC BỔNG</h2>`;
-
-                scholarships.forEach((sch, index) => {
-                    html += `
-                        <div class="scholarship-card">
-                            <h3>${index + 1}. ${sch.name}</h3>
-                            <p><strong>Đối tượng:</strong></p>
-                            <ul class="target-list">
-                                ${sch.target.map(item => `<li>${item}</li>`).join("")}
-                            </ul>
-                            <p><strong>Mức học bổng:</strong> <span class="amount">${sch.amount}</span></p>
-                            ${sch.note ? `<p><strong>Ghi chú:</strong> ${sch.note}</p>` : ''}
-                        </div>`;
-                });
-
-                html += `</div>`;
-                scholarshipSlide.innerHTML = html;
-                wrapper.appendChild(scholarshipSlide);
+                // Thêm slide mời gọi chính sách học bổng (slide cuối)
+                const inviteSlide = document.createElement('div');
+                inviteSlide.className = 'swiper-slide';
+                inviteSlide.innerHTML = `
+                    <div class="scholarship-invite">
+                        <h2>Khám phá ngay chính sách học bổng hấp dẫn tại BDU!</h2>
+                        <p>Nhiều suất học bổng toàn phần, bán phần, học bổng tài năng, học bổng gia đình và nhiều ưu đãi đặc biệt khác đang chờ bạn. Đừng bỏ lỡ cơ hội nhận hỗ trợ tài chính lên đến 100% học phí!</p>
+                        <button class="scholarship-btn" onclick="window.location.href='scholarships.html'">
+                            Xem chi tiết học bổng
+                        </button>
+                    </div>`;
+                wrapper.appendChild(inviteSlide);
 
                 // Khởi tạo Swiper
                 swiper = new Swiper('.swiper-container', {
@@ -333,7 +322,7 @@
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     },
-                    autoHeight: true,           // Quan trọng nhất: tự điều chỉnh chiều cao slide
+                    autoHeight: true,
                     observer: true,
                     observeParents: true,
                     on: {
@@ -345,8 +334,7 @@
                 });
             })
             .catch(err => {
-                console.error('Lỗi tải dữ liệu:', err);
-                // Có thể thêm thông báo cho người dùng nếu muốn
+                console.error('Lỗi tải dữ liệu ngành học:', err);
             });
     </script>
 </body>
