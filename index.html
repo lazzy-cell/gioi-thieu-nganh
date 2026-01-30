@@ -16,7 +16,7 @@ html, body {
     background: #f4f4f4;
 }
 
-/* ===== HEADER DÙNG LOGO ===== */
+/* ===== HEADER ===== */
 header {
     background: linear-gradient(135deg, #800020, #a52a2a);
     color: #fff;
@@ -26,6 +26,12 @@ header {
 .header-inner {
     max-width: 1100px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-left {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -46,6 +52,54 @@ header {
     margin: 4px 0 0;
     font-size: 14px;
     opacity: 0.9;
+}
+
+/* ===== HEADER ACTIONS - TEXT BUTTON STYLE ===== */
+.header-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.header-actions button,
+.header-actions a {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 4px 0;
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.85;
+    position: relative;
+    transition: opacity 0.2s ease;
+}
+
+/* underline animation */
+.header-actions button::after,
+.header-actions a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.25s ease;
+}
+
+.header-actions button:hover,
+.header-actions a:hover {
+    opacity: 1;
+}
+
+.header-actions button:hover::after,
+.header-actions a:hover::after {
+    width: 100%;
+}
+
+/* link ngoài dịu hơn một chút */
+.header-actions a {
+    opacity: 0.7;
 }
 
 /* ===== SWIPER ===== */
@@ -114,8 +168,13 @@ header {
     .header-logo {
         height: 44px;
     }
+
     .header-text h1 {
         font-size: 18px;
+    }
+
+    .header-actions {
+        display: none;
     }
 }
 </style>
@@ -125,15 +184,25 @@ header {
 
 <header>
     <div class="header-inner">
-        <img
-          src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/logo.png"
-          class="header-logo"
-          onerror="this.style.display='none'">
 
-        <div class="header-text">
-            <h1>Đại Học Bình Dương</h1>
-            <p>Giới thiệu chuyên ngành</p>
+        <div class="header-left">
+            <img
+              src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/logo.png"
+              class="header-logo"
+              onerror="this.style.display='none'">
+
+            <div class="header-text">
+                <h1>Đại Học Bình Dương</h1>
+                <p>Giới thiệu chuyên ngành</p>
+            </div>
         </div>
+
+        <div class="header-actions">
+            <button onclick="swiper.slideTo(0)">Giới thiệu</button>
+            <button onclick="swiper.slideTo(1)">Danh sách ngành</button>
+            <a href="https://www.bdu.edu.vn/" target="_blank">Website BDU</a>
+        </div>
+
     </div>
 </header>
 
