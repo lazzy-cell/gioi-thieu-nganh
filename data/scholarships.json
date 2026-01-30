@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Học bổng Toàn phần",
+    "target": "Cựu học sinh có học lực giỏi, hạnh kiểm tốt, điểm trung bình ≥8.0, thi THPT ≥21 điểm, không nợ môn.",
+    "amount": "100% học phí toàn khóa học (2 năm).",
+    "note": "Áp dụng đến ngày 21/08/2026."
+  },
+  {
+    "name": "Học bổng Cán cân vươn mới",
+    "target": "Tân sinh viên thủ khoa, á khoa, hạng 3 nhập học; nữ sinh viên học ngành STEM; học bổng cân bằng giới.",
+    "amount": "50% học phí toàn khóa (gửi điểm xét tuyển vào hồ sơ)."
+  },
+  {
+    "name": "Học bổng Kiến tạo cực sáng khởi",
+    "target": "Tân sinh viên đăng ký xét tuyển có năng khiếu thể thao, văn nghệ, khởi nghiệp; nữ sinh viên xuất sắc.",
+    "amount": "30% - 50% học phí toàn khóa."
+  },
+  {
+    "name": "Học bổng Tài năng",
+    "target": "Có giấy chứng nhận đạt giải thi học sinh giỏi, khoa học kỹ thuật; chứng chỉ quốc tế như TOEIC ≥450, TOEFL, IELTS ≥4.5, chứng chỉ tin học quốc tế.",
+    "amount": "30.000.000 đồng/suất."
+  },
+  {
+    "name": "Học bổng Gia đình BDU",
+    "target": "Con ruột cựu sinh viên Bình Dương; ưu tiên cao nếu có 1 con; anh em ruột cùng học; học đúng thời gian chuẩn.",
+    "amount": "30.000.000 đồng/suất."
+  },
+  {
+    "name": "Học bổng Ngân hàng kiến",
+    "target": "Tân sinh viên ký túc xá ≥29 ngày, ký quỹ.",
+    "amount": "1.000.000 đồng/suất.",
+    "note": "Ngân hàng hợp tác: Lợi ích từ Ngân hàng Hợp tác, Quốc tế, Nông nghiệp, Xã hội, Đầu tư, Công thương, Bản Việt, Bản Việt, Bảo Việt, Hàng Hải, Dầu khí, Tiên Phong."
+  },
+  {
+    "name": "Học bổng Gia đình công đoàn BDU",
+    "target": "Tân sinh viên nhập học từ 17/08/2026, có voucher giảm phí từ công đoàn.",
+    "amount": "5.000.000 đồng/suất."
+  },
+  {
+    "name": "Học bổng Hỗ trợ",
+    "target": "Tân sinh viên nhập học BDU.",
+    "amount": "5.000.000 đồng/suất."
+  }
+]

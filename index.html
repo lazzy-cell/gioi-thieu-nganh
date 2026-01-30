@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -153,6 +152,32 @@
                 display: none;
             }
         }
+        /* ===== SCHOLARSHIP CARDS ===== */
+        .scholarship-container {
+            max-width: 900px;
+            width: 100%;
+            padding: 25px;
+            text-align: left;
+        }
+        .scholarship-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .scholarship-card h3 {
+            color: #800020;
+            margin-top: 0;
+        }
+        .scholarship-card p {
+            margin: 5px 0;
+        }
+        .scholarship-card .amount {
+            color: #a52a2a;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -221,56 +246,27 @@
                     </div>`;
                 wrapper.appendChild(s);
             });
+            return fetch('data/scholarships.json');
+        })
+        .then(r => r.json())
+        .then(scholarships => {
+            const wrapper = document.querySelector('.swiper-wrapper');
             const scholarshipSlide = document.createElement('div');
             scholarshipSlide.className = 'swiper-slide';
-            scholarshipSlide.innerHTML = `
-                <div class="page-content" style="text-align: left; max-width: 900px;">
-                    <h2 style="text-align: center; color: #800020;">CHÍNH SÁCH HỌC BỔNG</h2>
-                    <ol>
-                        <li>
-                            <h3>Học bổng Toàn phần</h3>
-                            <p><strong>Đối tượng:</strong> Cựu học sinh có học lực giỏi, hạnh kiểm tốt, điểm trung bình ≥8.0, thi THPT ≥21 điểm, không nợ môn.</p>
-                            <p><strong>Mức học bổng:</strong> <span style="color: #a52a2a; font-size: 1.2em;">100% học phí</span> toàn khóa học (2 năm).</p>
-                            <p>Áp dụng đến ngày 21/08/2026.</p>
-                        </li>
-                        <li>
-                            <h3>Học bổng Cán cân vươn mới</h3>
-                            <p><strong>Đối tượng:</strong> Tân sinh viên thủ khoa, á khoa, hạng 3 nhập học; nữ sinh viên học ngành STEM; học bổng cân bằng giới.</p>
-                            <p><strong>Mức học bổng:</strong> <span style="color: #a52a2a; font-size: 1.2em;">50% học phí</span> toàn khóa (gửi điểm xét tuyển vào hồ sơ).</p>
-                        </li>
-                        <li>
-                            <h3>Học bổng Kiến tạo cực sáng khởi</h3>
-                            <p><strong>Đối tượng:</strong> Tân sinh viên đăng ký xét tuyển có năng khiếu thể thao, văn nghệ, khởi nghiệp; nữ sinh viên xuất sắc.</p>
-                            <p><strong>Mức học bổng:</strong> <span style="color: #a52a2a; font-size: 1.2em;">30% - 50% học phí</span> toàn khóa.</p>
-                        </li>
-                        <li>
-                            <h3>Học bổng Tài năng</h3>
-                            <p><strong>Đối tượng:</strong> Có giấy chứng nhận đạt giải thi học sinh giỏi, khoa học kỹ thuật; chứng chỉ quốc tế như TOEIC ≥450, TOEFL, IELTS ≥4.5, chứng chỉ tin học quốc tế.</p>
-                            <p><strong>Mức học bổng:</strong> <span style="color: #a52a2a; font-size: 1.2em;">30.000.000 đồng/suất</span>.</p>
-                        </li>
-                        <li>
-                            <h3>Học bổng Gia đình BDU</h3>
-                            <p><strong>Đối tượng:</strong> Con ruột cựu sinh viên Bình Dương; ưu tiên cao nếu có 1 con; anh em ruột cùng học; học đúng thời gian chuẩn.</p>
-                            <p><strong>Mức học bổng:</strong> <span style="color: #a52a2a; font-size: 1.2em;">30.000.000 đồng/suất</span>.</p>
-                        </li>
-                        <li>
-                            <h3>Học bổng Ngân hàng kiến</h3>
-                            <p><strong>Đối tượng:</strong> Tân sinh viên ký túc xá ≥29 ngày, ký quỹ.</p>
-                            <p><strong>Mức học bổng:</strong> <span style="color: #a52a2a; font-size: 1.2em;">1.000.000 đồng/suất</span>.</p>
-                            <p>Ngân hàng hợp tác: Lợi ích từ Ngân hàng Hợp tác, Quốc tế, Nông nghiệp, Xã hội, Đầu tư, Công thương, Bản Việt, Bản Việt, Bảo Việt, Hàng Hải, Dầu khí, Tiên Phong.</p>
-                        </li>
-                        <li>
-                            <h3>Học bổng Gia đình công đoàn BDU</h3>
-                            <p><strong>Đối tượng:</strong> Tân sinh viên nhập học từ 17/08/2026, có voucher giảm phí từ công đoàn.</p>
-                            <p><strong>Mức học bổng:</strong> <span style="color: #a52a2a; font-size: 1.2em;">5.000.000 đồng/suất</span>.</p>
-                        </li>
-                        <li>
-                            <h3>Học bổng Hỗ trợ</h3>
-                            <p><strong>Đối tượng:</strong> Tân sinh viên nhập học BDU.</p>
-                            <p><strong>Mức học bổng:</strong> <span style="color: #a52a2a; font-size: 1.2em;">5.000.000 đồng/suất</span>.</p>
-                        </li>
-                    </ol>
-                </div>`;
+            let innerContent = `
+                <div class="scholarship-container">
+                    <h2 style="text-align: center; color: #800020;">CHÍNH SÁCH HỌC BỔNG</h2>`;
+            scholarships.forEach((sch, index) => {
+                innerContent += `
+                    <div class="scholarship-card">
+                        <h3>${index + 1}. ${sch.name}</h3>
+                        <p><strong>Đối tượng:</strong> ${sch.target}</p>
+                        <p><strong>Mức học bổng:</strong> <span class="amount">${sch.amount}</span></p>
+                        ${sch.note ? `<p><strong>Ghi chú:</strong> ${sch.note}</p>` : ''}
+                    </div>`;
+            });
+            innerContent += `</div>`;
+            scholarshipSlide.innerHTML = innerContent;
             wrapper.appendChild(scholarshipSlide);
             swiper = new Swiper('.swiper-container', {
                 navigation: {
@@ -288,4 +284,3 @@
     </script>
 </body>
 </html>
-```
