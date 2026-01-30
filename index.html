@@ -39,8 +39,6 @@ header {
 
 .header-logo {
     height: 52px;
-    width: auto;
-    flex-shrink: 0;
 }
 
 .header-text h1 {
@@ -54,7 +52,6 @@ header {
     opacity: 0.9;
 }
 
-/* ===== HEADER ACTIONS - TEXT BUTTON STYLE ===== */
 .header-actions {
     display: flex;
     gap: 20px;
@@ -66,40 +63,14 @@ header {
     border: none;
     color: #fff;
     font-size: 14px;
-    padding: 4px 0;
     cursor: pointer;
-    text-decoration: none;
     opacity: 0.85;
     position: relative;
-    transition: opacity 0.2s ease;
-}
-
-/* underline animation */
-.header-actions button::after,
-.header-actions a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background: #fff;
-    transition: width 0.25s ease;
 }
 
 .header-actions button:hover,
 .header-actions a:hover {
     opacity: 1;
-}
-
-.header-actions button:hover::after,
-.header-actions a:hover::after {
-    width: 100%;
-}
-
-/* link ngoài dịu hơn một chút */
-.header-actions a {
-    opacity: 0.7;
 }
 
 /* ===== SWIPER ===== */
@@ -131,7 +102,6 @@ header {
     margin-bottom: 15px;
 }
 
-/* ===== BUTTON ===== */
 .start-button {
     background: linear-gradient(to right, #800020, #a52a2a);
     color: #fff;
@@ -140,12 +110,7 @@ header {
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
-    transition: opacity 0.3s ease;
     margin-top: 20px;
-}
-
-.start-button:hover {
-    opacity: 0.9;
 }
 
 /* ===== PROGRESS BAR ===== */
@@ -163,16 +128,48 @@ header {
     background: #800020;
 }
 
+/* ===== SCHOLARSHIP ===== */
+.scholarship {
+    text-align: left;
+}
+
+.scholarship h2 {
+    text-align: center;
+    color: #800020;
+    margin-bottom: 20px;
+}
+
+.scholarship-card {
+    background: #fafafa;
+    border-left: 5px solid #800020;
+    padding: 16px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.scholarship-card h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: #a52a2a;
+}
+
+.scholarship-card ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.scholarship-card li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #800020;
+}
+
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
-    .header-logo {
-        height: 44px;
-    }
-
-    .header-text h1 {
-        font-size: 18px;
-    }
-
     .header-actions {
         display: none;
     }
@@ -184,13 +181,8 @@ header {
 
 <header>
     <div class="header-inner">
-
         <div class="header-left">
-            <img
-              src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/logo.png"
-              class="header-logo"
-              onerror="this.style.display='none'">
-
+            <img src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/logo.png" class="header-logo">
             <div class="header-text">
                 <h1>Đại Học Bình Dương</h1>
                 <p>Giới thiệu chuyên ngành</p>
@@ -199,10 +191,9 @@ header {
 
         <div class="header-actions">
             <button onclick="swiper.slideTo(0)">Giới thiệu</button>
-            <button onclick="swiper.slideTo(1)">Danh sách ngành</button>
+            <button onclick="swiper.slideTo(swiper.slides.length - 1)">Chính sách học bổng</button>
             <a href="https://www.bdu.edu.vn/" target="_blank">Website BDU</a>
         </div>
-
     </div>
 </header>
 
@@ -212,19 +203,9 @@ header {
         <!-- SLIDE GIỚI THIỆU -->
         <div class="swiper-slide">
             <div class="page-content">
-                <img
-                  src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/trang-gioi-thieu.jpg"
-                  class="major-image"
-                  onerror="this.src='https://via.placeholder.com/800x300?text=BDU'">
-
-                <h2>
-                    Cùng đến với hành trình khám phá 18 chuyên ngành đào tạo đa dạng,
-                    chất lượng cao tại Đại học Bình Dương.
-                </h2>
-
-                <button class="start-button" onclick="swiper.slideNext()">
-                    Bắt đầu khám phá
-                </button>
+                <img src="https://raw.githubusercontent.com/lazzy-cell/gioi-thieu-nganh/refs/heads/main/images/trang-gioi-thieu.jpg" class="major-image">
+                <h2>Khám phá 18 chuyên ngành đào tạo đa dạng, chất lượng cao tại Đại học Bình Dương</h2>
+                <button class="start-button" onclick="swiper.slideNext()">Bắt đầu khám phá</button>
             </div>
         </div>
 
@@ -247,20 +228,71 @@ fetch('data/majors.json')
     const wrapper = document.querySelector('.swiper-wrapper');
 
     data.forEach(m => {
-        const s = document.createElement('div');
-        s.className = 'swiper-slide';
-        s.innerHTML = `
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.innerHTML = `
             <div class="page-content">
-                <img
-                  src="${m.image}"
-                  class="major-image"
-                  onerror="this.src='https://via.placeholder.com/800x300?text=No+Image'">
+                <img src="${m.image}" class="major-image">
                 <h3>${m.name}</h3>
                 <p><b>Tổ hợp xét tuyển:</b> ${m.combinations.join(", ")}</p>
                 <p>${m.description}</p>
             </div>`;
-        wrapper.appendChild(s);
+        wrapper.appendChild(slide);
     });
+
+    /* SLIDE HỌC BỔNG */
+    const scholarship = document.createElement('div');
+    scholarship.className = 'swiper-slide';
+    scholarship.innerHTML = `
+        <div class="page-content scholarship">
+            <h2>Chính sách học bổng 2025</h2>
+
+            <div class="scholarship-card">
+                <h3>Học bổng Toàn phần</h3>
+                <ul>
+                    <li>Miễn <span class="highlight">100% học phí học kỳ 1 và 2</span></li>
+                    <li>Dành cho thí sinh có thành tích học tập xuất sắc</li>
+                </ul>
+            </div>
+
+            <div class="scholarship-card">
+                <h3>Học bổng Chắp cánh Ước mơ</h3>
+                <ul>
+                    <li>Giảm <span class="highlight">50% học phí</span></li>
+                    <li>Dành cho thí sinh có hoàn cảnh khó khăn</li>
+                </ul>
+            </div>
+
+            <div class="scholarship-card">
+                <h3>Học bổng Kiến tạo Cuộc sống xanh</h3>
+                <ul>
+                    <li>Giảm <span class="highlight">30 – 50% học phí</span></li>
+                    <li>Áp dụng cho các ngành kỹ thuật – công nghệ</li>
+                </ul>
+            </div>
+
+            <div class="scholarship-card">
+                <h3>Học bổng Tài năng</h3>
+                <ul>
+                    <li>Trị giá <span class="highlight">30.000.000 đồng</span></li>
+                    <li>Có chứng chỉ ngoại ngữ quốc tế</li>
+                </ul>
+            </div>
+
+            <div class="scholarship-card">
+                <h3>Học bổng Ngành Mũi nhọn</h3>
+                <ul>
+                    <li>Hỗ trợ <span class="highlight">8.000.000 đồng mỗi suất</span></li>
+                    <li>Áp dụng cho các ngành trọng điểm</li>
+                </ul>
+            </div>
+
+            <p style="text-align:center;font-size:14px;opacity:0.7">
+                Áp dụng theo quy định của Đại học Bình Dương
+            </p>
+        </div>
+    `;
+    wrapper.appendChild(scholarship);
 
     swiper = new Swiper('.swiper-container', {
         navigation: {
